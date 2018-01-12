@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CheckoutKata.Models;
 
 namespace CheckoutKataTests
 {
@@ -9,9 +10,9 @@ namespace CheckoutKataTests
     /// Summary description for StoreInventoryTests
     /// </summary>
     [TestClass]
-    public class StoreInventoryTests
+    public class ProductInventoryTests
     {
-        public StoreInventoryTests()
+        public ProductInventoryTests()
         {
             //
             // TODO: Add constructor logic here
@@ -61,9 +62,6 @@ namespace CheckoutKataTests
         [TestMethod]
         public void Create_inventory_test()
         {
-            //
-            // TODO: Add test logic here
-            //
             throw new NotImplementedException();
         }
 
@@ -86,61 +84,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_price_from_inventory_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Retrieve_product_offer_from_inventory_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Check_product_offer_is_valid()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Update_price_of_item_in_inventory_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
         public void Check_product_is_in_inventory_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Update_offer_on_item_in_inventory_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Discontinue_item_in_inventory_test()
         {
             //
             // TODO: Add test logic here
