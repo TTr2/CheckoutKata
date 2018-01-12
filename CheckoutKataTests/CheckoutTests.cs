@@ -62,7 +62,32 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_at_checkout()
+        public void Get_total_price_single_item_at_checkout()
+        {
+        }
+
+        [TestMethod]
+        public void Get_total_price_mixed_single_items_at_checkout()
+        {
+        }
+
+        [TestMethod]
+        public void Get_total_price_bulk_matching_offer_same_item_at_checkout()
+        {
+        }
+
+        [TestMethod]
+        public void Get_total_price_bulk_matching_offer_mixed_items_at_checkout()
+        {
+        }
+
+        [TestMethod]
+        public void Get_total_price_bulk_matching_offer_plus_misc_same_item_at_checkout()
+        {
+        }
+
+        [TestMethod]
+        public void Get_total_price_bulk_matching_offer_plus_misc_mixed_items_at_checkout()
         {
         }
 
