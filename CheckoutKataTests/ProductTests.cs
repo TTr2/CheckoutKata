@@ -65,14 +65,27 @@ namespace CheckoutKataTests
             //Setup
             Product productNotNullMultiDeal;
             Product productNullMultiDeal;
-            
+
             // Act
             productNotNullMultiDeal = new Product("A", 50, new MultiDeal());
             productNullMultiDeal = new Product("C", 20);
-            
+
             // Assert
             Assert.IsNotNull(productNotNullMultiDeal);
             Assert.IsNotNull(productNullMultiDeal);
+        }
+
+        [TestMethod]
+        public void Retrieve_product_sku_test()
+        {
+            // Setup
+            string sku = "A";
+
+            // Act
+            Product product = new Product(sku, 10);
+
+            // Assert
+            StringAssert.Equals(product.Sku, sku);
         }
 
         [TestMethod]
@@ -143,7 +156,7 @@ namespace CheckoutKataTests
         public void Check_product_offer_is_valid_test()
         {
             // Setup
-            TimeSpan interval = new TimeSpan(2,0,0,0);
+            TimeSpan interval = new TimeSpan(2, 0, 0, 0);
             DateTime lastWeek = DateTime.Now.Subtract(interval);
             DateTime nextWeek = DateTime.Now.Add(interval);
             DateTime now = DateTime.Now;
@@ -155,10 +168,10 @@ namespace CheckoutKataTests
             MultiDeal multiDeal_2 = new MultiDeal(3, 130, lastWeek, lastWeek);
             MultiDeal multiDeal_3 = new MultiDeal(3, 130, nextWeek, nextWeek);
 
-            Product product_1 = new Product("A", 10, multiDeal_1);
-            Product product_2 = new Product("A", 10, multiDeal_2);
-            Product product_3 = new Product("A", 10, multiDeal_3);
-            Product product_4 = new Product("A", 10, new MultiDeal());
+            Product product_1 = new Product("A", 50, multiDeal_1);
+            Product product_2 = new Product("A", 50, multiDeal_2);
+            Product product_3 = new Product("A", 50, multiDeal_3);
+            Product product_4 = new Product("A", 50, new MultiDeal());
 
             // Act
 

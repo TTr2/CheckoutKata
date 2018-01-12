@@ -29,12 +29,13 @@ namespace CheckoutKata.Models
         /// </summary>
         /// <param name="sku">The SKU of the product to check for.</param>
         /// <returns>Whether product with given SKU is in inventory.</returns>
-        bool IsProductInInventory(string sku);
+        bool Contains(string sku);
 
         /// <summary>
         /// Remove the product with matching SKU from inventory.
         /// </summary>
         /// <param name="sku">The SKU of the product to remove.</param>
-        void Remove(string sku);
+        /// <returns>Whether this product was successfully removed from the inventory.</returns>
+        bool Remove(string sku);
     }
 }

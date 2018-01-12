@@ -21,10 +21,7 @@ namespace CheckoutKata.Models
         /// <param name="multiDeal">The (optional) MultiDeal of the product.</param>
         public Product(string sku, int price, MultiDeal multiDeal = null)
         {
-            if (string.IsNullOrEmpty(sku))
-            {
-                throw new ArgumentNullException(nameof(sku));
-            }
+            this.Sku = string.IsNullOrEmpty(sku) ? throw new ArgumentNullException(nameof(sku)) : sku;
             this.Price = price;
             this.MultiDeal = multiDeal == null ? new MultiDeal() : multiDeal;
         }

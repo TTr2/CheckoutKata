@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CheckoutKata.Models
 {
+    /// <summary>
+    /// Represents an inventory of products that are can be added to a shopping trolley,
+    /// and provides accessors to retrieve the details of included products.
+    /// </summary>
     class ProductInventoryDictionary : IProductInventory
     {
         private Dictionary<string, Product> inventory;
@@ -21,7 +25,7 @@ namespace CheckoutKata.Models
         /// <summary>
         /// <see cref="IProductInventory.Add(Product)"/>
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="product"><see cref="Product"/></param>
         public void Add(Product product)
         {
             this.inventory.Add(product.Sku, product);
@@ -30,28 +34,32 @@ namespace CheckoutKata.Models
         /// <summary>
         /// <see cref="IProductInventory.Get(string)"/>
         /// </summary>
-        /// <param name="product">The SKU of the product to retrieve.</param>
+        /// <param name="sku"><see cref="Product.Sku"/></param>
+        /// <returns><see cref="Product"/></returns>
         public Product Get(string sku)
         {
-            throw new NotImplementedException();
+            Product value;
+            this.inventory.TryGetValue(sku, out value);
+            return value;
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.IsProductInInventory(string)"/>
+        /// <see cref="IProductInventory.Contains(string)"/>
         /// </summary>
-        /// <param name="sku">The SKU of the product to check for.</param>
-        public bool IsProductInInventory(string sku)
+        /// <param name="sku"><see cref="Product.Sku"/></param>
+        public bool Contains(string sku)
         {
-            throw new NotImplementedException();
+            return this.inventory.ContainsKey(sku);
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.Remove(string)"/>
+        /// <see cref="IProductInventory.Remove(string)"
         /// </summary>
-        /// <param name="product">The SKU of the product to remove.</param>
-        public void Remove(string sku)
+        /// <param name="sku"><see cref="Product.Sku"/></param>
+        /// <returns>Whether the product was successfully removed from the inventory.</returns>
+        public bool Remove(string sku)
         {
-            throw new NotImplementedException();
+            return this.inventory.Remove(sku);
         }
     }
 }

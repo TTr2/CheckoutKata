@@ -16,10 +16,10 @@ namespace CheckoutKataTests
 
         public ProductInventoryTests()
         {
-            productA = new Product("A", 50, new MultiDeal());
-            productB = new Product("B", 30, new MultiDeal());
-            productC = new Product("C", 20, new MultiDeal());
-            productD = new Product("D", 15, new MultiDeal());
+            productA = new Product("A", 50);
+            productB = new Product("B", 30);
+            productC = new Product("C", 20);
+            productD = new Product("D", 15);
         }
 
         private TestContext testContextInstance;
@@ -77,41 +77,55 @@ namespace CheckoutKataTests
         {
             // Setup
             IProductInventory inventory = new ProductInventoryDictionary();
-            Product product = new Product("A", 50, new MultiDeal());
 
             // Act
-            inventory.Add(product);
+            inventory.Add(productA);
 
             // Assert
-
             // Passes if no exception.
         }
 
         [TestMethod]
         public void Retrieve_product_from_inventory_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            IProductInventory inventory = new ProductInventoryDictionary();
+
+            // Act
+            inventory.Add(productA);
+            Product retrievedProduct = inventory.Get(productA.Sku);
+
+            // Assert
+            Assert.AreEqual(productA, retrievedProduct);
         }
 
         [TestMethod]
         public void Check_product_is_in_inventory_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            IProductInventory inventory = new ProductInventoryDictionary();
+            string sku = "A";
+
+            // Act
+            inventory.Add(productA);
+
+            // Assert
+            Assert.IsTrue(inventory.Contains(sku));
         }
 
         [TestMethod]
         public void Remove_product_from_inventory_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            IProductInventory inventory = new ProductInventoryDictionary();
+
+            // Act
+            inventory.Add(productA);
+            Assert.IsTrue(inventory.Contains(productA.Sku));
+            inventory.Remove(productA.Sku);
+
+            // Assert
+            Assert.IsFalse(inventory.Contains(productA.Sku));
         }
     }
 }
