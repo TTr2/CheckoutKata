@@ -66,7 +66,7 @@ namespace CheckoutKataTests
         public void Create_inventory_test()
         {
             //Setup
-            IProductInventory inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryDictionary();
 
             // Assert
             Assert.IsNotNull(inventory);
@@ -76,7 +76,7 @@ namespace CheckoutKataTests
         public void Add_product_to_inventory_test()
         {
             // Setup
-            IProductInventory inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
             inventory.Add(productA);
@@ -89,7 +89,7 @@ namespace CheckoutKataTests
         public void Retrieve_product_from_inventory_test()
         {
             // Setup
-            IProductInventory inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
             inventory.Add(productA);
@@ -103,7 +103,7 @@ namespace CheckoutKataTests
         public void Check_product_is_in_inventory_test()
         {
             // Setup
-            IProductInventory inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryDictionary();
             string sku = "A";
 
             // Act
@@ -117,7 +117,7 @@ namespace CheckoutKataTests
         public void Remove_product_from_inventory_test()
         {
             // Setup
-            IProductInventory inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
             inventory.Add(productA);

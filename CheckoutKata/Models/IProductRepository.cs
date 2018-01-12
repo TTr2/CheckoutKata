@@ -7,35 +7,35 @@ using System.Threading.Tasks;
 namespace CheckoutKata.Models
 {
     /// <summary>
-    /// Interface for an inventory of products.
+    /// Interface for an repository of products.
     /// </summary>
-    internal interface IProductInventory
+    internal interface IProductRepository
     {
         /// <summary>
-        /// Add a product to the inventory.
+        /// Add a product to the repository.
         /// </summary>
-        /// <param name="product">The product to add to the inventory.</param>
+        /// <param name="product">The product to add to the repository.</param>
         void Add(Product product);
 
         /// <summary>
-        /// Get a product from the inventory.
+        /// Get a product from the repository.
         /// </summary>
         /// <param name="sku">The SKU of the product to retrieve.</param>
         /// <returns>The product with matching SKU or null.</returns>
         Product Get(string sku);
 
         /// <summary>
-        /// Checks whether product with given SKU is in inventory.
+        /// Checks whether product with given SKU is in repository.
         /// </summary>
         /// <param name="sku">The SKU of the product to check for.</param>
-        /// <returns>Whether product with given SKU is in inventory.</returns>
+        /// <returns>Whether product with given SKU is in repository.</returns>
         bool Contains(string sku);
 
         /// <summary>
-        /// Remove the product with matching SKU from inventory.
+        /// Remove the product with matching SKU from repository.
         /// </summary>
         /// <param name="sku">The SKU of the product to remove.</param>
-        /// <returns>Whether this product was successfully removed from the inventory.</returns>
+        /// <returns>Whether this product was successfully removed from the repository.</returns>
         bool Remove(string sku);
     }
 }

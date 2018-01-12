@@ -10,7 +10,7 @@ namespace CheckoutKata.Models
     /// Represents an inventory of products that are can be added to a shopping trolley,
     /// and provides accessors to retrieve the details of included products.
     /// </summary>
-    class ProductInventoryDictionary : IProductInventory
+    class ProductInventoryDictionary : IProductRepository
     {
         private Dictionary<string, Product> inventory;
 
@@ -23,7 +23,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.Add(Product)"/>
+        /// <see cref="IProductRepository.Add(Product)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
         public void Add(Product product)
@@ -32,7 +32,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.Get(string)"/>
+        /// <see cref="IProductRepository.Get(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns><see cref="Product"/></returns>
@@ -44,7 +44,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.Contains(string)"/>
+        /// <see cref="IProductRepository.Contains(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         public bool Contains(string sku)
@@ -53,7 +53,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductInventory.Remove(string)"
+        /// <see cref="IProductRepository.Remove(string)"
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns>Whether the product was successfully removed from the inventory.</returns>
