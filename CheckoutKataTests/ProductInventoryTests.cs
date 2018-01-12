@@ -62,7 +62,11 @@ namespace CheckoutKataTests
         [TestMethod]
         public void Create_inventory_test()
         {
-            throw new NotImplementedException();
+            //Setup
+            IProductInventory inventory = new ProductInventoryDictionary();
+
+            // Assert
+            Assert.IsNotNull(inventory);
         }
 
         [TestMethod]
