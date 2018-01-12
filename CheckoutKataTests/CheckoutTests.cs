@@ -34,66 +34,79 @@ namespace CheckoutKataTests
         [TestMethod]
         public void Create_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Scan_item_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Scan_items_in_bulk_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Enter_item_manually_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Remove_item_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Remove_items_in_bulk_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_single_item_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_mixed_single_items_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_bulk_matching_offer_same_item_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_bulk_matching_offer_mixed_items_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_bulk_matching_offer_plus_misc_same_item_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_price_bulk_matching_offer_plus_misc_mixed_items_at_checkout()
         {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Get_total_offer_savings_at_checkout()
         {
+            throw new NotImplementedException();
         }
     }
 }

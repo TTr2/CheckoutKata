@@ -64,6 +64,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -72,6 +73,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -80,6 +82,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -88,6 +91,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -96,6 +100,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -104,6 +109,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -112,6 +118,7 @@ namespace CheckoutKataTests
             //
             // TODO: Add test logic here
             //
+            throw new NotImplementedException();
         }
     }
 }
