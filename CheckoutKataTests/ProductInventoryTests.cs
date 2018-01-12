@@ -79,7 +79,7 @@ namespace CheckoutKataTests
             IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
-            inventory.Add(productA);
+            inventory.AddProduct(productA);
 
             // Assert
             // Passes if no exception.
@@ -92,8 +92,8 @@ namespace CheckoutKataTests
             IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
-            inventory.Add(productA);
-            Product retrievedProduct = inventory.Get(productA.Sku);
+            inventory.AddProduct(productA);
+            Product retrievedProduct = inventory.GetProduct(productA.Sku);
 
             // Assert
             Assert.AreEqual(productA, retrievedProduct);
@@ -107,10 +107,10 @@ namespace CheckoutKataTests
             string sku = "A";
 
             // Act
-            inventory.Add(productA);
+            inventory.AddProduct(productA);
 
             // Assert
-            Assert.IsTrue(inventory.Contains(sku));
+            Assert.IsTrue(inventory.ContainsProduct(sku));
         }
 
         [TestMethod]
@@ -120,12 +120,12 @@ namespace CheckoutKataTests
             IProductRepository inventory = new ProductInventoryDictionary();
 
             // Act
-            inventory.Add(productA);
-            Assert.IsTrue(inventory.Contains(productA.Sku));
-            inventory.Remove(productA.Sku);
+            inventory.AddProduct(productA);
+            Assert.IsTrue(inventory.ContainsProduct(productA.Sku));
+            inventory.RemoveProduct(productA.Sku);
 
             // Assert
-            Assert.IsFalse(inventory.Contains(productA.Sku));
+            Assert.IsFalse(inventory.ContainsProduct(productA.Sku));
         }
     }
 }

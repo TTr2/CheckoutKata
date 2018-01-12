@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\IProductInventory.cs" />
+    <Compile Include="Models\IProductRepository.cs" />
+    <Compile Include="Models\IShoppingTrolley.cs" />
     <Compile Include="Models\MultiDeal.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductInventoryDictionary.cs" />
+    <Compile Include="Models\ShoppingTrolleyDictionary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

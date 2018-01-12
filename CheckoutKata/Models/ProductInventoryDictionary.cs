@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,20 +24,20 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.Add(Product)"/>
+        /// <see cref="IProductRepository.AddProduct(Product)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
-        public void Add(Product product)
+        public void AddProduct(Product product)
         {
             this.inventory.Add(product.Sku, product);
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.Get(string)"/>
+        /// <see cref="IProductRepository.GetProduct(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns><see cref="Product"/></returns>
-        public Product Get(string sku)
+        public Product GetProduct(string sku)
         {
             Product value;
             this.inventory.TryGetValue(sku, out value);
@@ -44,20 +45,29 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.Contains(string)"/>
+        /// <see cref="IProductRepository.GetAllProducts"/>
+        /// </summary>
+        /// <returns><see cref="IProductRepository.GetAllProducts"/></returns>
+        public IList<Product> GetAllProducts()
+        {
+            return this.inventory.Values.ToList();
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.ContainsProduct(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
-        public bool Contains(string sku)
+        public bool ContainsProduct(string sku)
         {
             return this.inventory.ContainsKey(sku);
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.Remove(string)"
+        /// <see cref="IProductRepository.RemoveProduct(string)"
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns>Whether the product was successfully removed from the inventory.</returns>
-        public bool Remove(string sku)
+        public bool RemoveProduct(string sku)
         {
             return this.inventory.Remove(sku);
         }

@@ -8,6 +8,19 @@ namespace CheckoutKata.Models
 {
     interface IShoppingTrolley : IProductRepository
     {
+        /// <summary>
+        /// Adds products in bulk to Shopping Trolley.
+        /// </summary>
+        /// <param name="sku"><see cref="Product"/></param>
+        /// <param name="units">The number of units to add.</param>
+        void AddBulkProducts(Product product, int units);
 
+        /// <summary>
+        /// Removes products in bulk from shopping trolley.
+        /// </summary>
+        /// <param name="sku"><see cref="Product.Sku"/></param>
+        /// <param name="units">The number of units to remove.</param>
+        /// <returns>The number of items removed from the shopping trolley.</returns>
+        int RemoveBulkProducts(string sku, int units);
     }
 }
