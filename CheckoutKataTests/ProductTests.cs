@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CheckoutKata.Models;
 
 namespace CheckoutKataTests
 {
@@ -61,68 +62,85 @@ namespace CheckoutKataTests
         [TestMethod]
         public void Create_product()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            //Setup
+            Product productNotNullMultiDeal;
+            Product productNullMultiDeal;
+            
+            // Act
+            productNotNullMultiDeal = new Product("A", 50, new MultiDeal());
+            productNullMultiDeal = new Product("C", 20);
+            
+            // Assert
+            Assert.IsNotNull(productNotNullMultiDeal);
+            Assert.IsNotNull(productNullMultiDeal);
         }
 
         [TestMethod]
         public void Retrieve_product_price_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            int price = 50;
+
+            // Act
+            Product product = new Product("A", price);
+
+            // Assert
+            Assert.IsTrue(product.Price.Equals(price));
         }
 
         [TestMethod]
         public void Update_product_price_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            int price = 50;
+            int newPrice = 60;
+            Product product = new Product("A", price);
+
+            // Act
+            product.Price = newPrice;
+
+            // Assert
+            Assert.IsFalse(product.Price.Equals(price));
+            Assert.IsTrue(product.Price.Equals(newPrice));
         }
 
         [TestMethod]
         public void Retrieve_product_offer_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            Product productNotNullMultiDeal;
+            Product productNullMultiDeal;
+
+            // Act
+            productNotNullMultiDeal = new Product("A", 50, new MultiDeal());
+            productNullMultiDeal = new Product("C", 20);
+
+            // Assert
+            Assert.IsInstanceOfType(productNotNullMultiDeal.MultiDeal, typeof(MultiDeal));
+            Assert.IsNotNull(productNotNullMultiDeal.MultiDeal);
+
+            Assert.IsInstanceOfType(productNullMultiDeal.MultiDeal, typeof(MultiDeal));
+            Assert.IsNotNull(productNullMultiDeal.MultiDeal);
         }
 
         [TestMethod]
         public void Replace_product_offer_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            MultiDeal multiDeal_1 = new MultiDeal();
+            MultiDeal multiDeal_2 = new MultiDeal();
+            Product product = new Product("A", 10, multiDeal_1);
+
+            // Act
+            product.MultiDeal = multiDeal_2;
+
+            // Assert
+            Assert.AreNotSame(product.MultiDeal, multiDeal_1);
+            Assert.AreSame(product.MultiDeal, multiDeal_2);
         }
 
         [TestMethod]
         public void Check_product_offer_is_valid_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Check_if_product_discontinued_test()
-        {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void Discontinue_product_test()
         {
             //
             // TODO: Add test logic here

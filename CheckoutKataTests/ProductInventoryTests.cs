@@ -12,11 +12,14 @@ namespace CheckoutKataTests
     [TestClass]
     public class ProductInventoryTests
     {
+        readonly Product productA, productB, productC, productD;
+
         public ProductInventoryTests()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            productA = new Product("A", 50, new MultiDeal());
+            productB = new Product("B", 30, new MultiDeal());
+            productC = new Product("C", 20, new MultiDeal());
+            productD = new Product("D", 15, new MultiDeal());
         }
 
         private TestContext testContextInstance;
@@ -72,10 +75,16 @@ namespace CheckoutKataTests
         [TestMethod]
         public void Add_product_to_inventory_test()
         {
-            //
-            // TODO: Add test logic here
-            //
-            throw new NotImplementedException();
+            // Setup
+            IProductInventory inventory = new ProductInventoryDictionary();
+            Product product = new Product("A", 50, new MultiDeal());
+
+            // Act
+            inventory.Add(product);
+
+            // Assert
+
+            // Passes if no exception.
         }
 
         [TestMethod]

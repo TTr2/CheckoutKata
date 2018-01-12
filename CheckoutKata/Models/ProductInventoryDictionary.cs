@@ -8,6 +8,15 @@ namespace CheckoutKata.Models
 {
     class ProductInventoryDictionary : IProductInventory
     {
+        private Dictionary<string, Product> inventory;
+
+        /// <summary>
+        /// Constructor for a product inventory dictionary.
+        /// </summary>
+        public ProductInventoryDictionary()
+        {
+            this.inventory = new Dictionary<string, Product>();
+        }
 
         /// <summary>
         /// <see cref="IProductInventory.Add(Product)"/>
@@ -15,7 +24,7 @@ namespace CheckoutKata.Models
         /// <param name="product"></param>
         public void Add(Product product)
         {
-            throw new NotImplementedException();
+            this.inventory.Add(product.Sku, product);
         }
 
         /// <summary>
