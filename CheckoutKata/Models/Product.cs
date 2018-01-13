@@ -53,14 +53,5 @@ namespace CheckoutKata.Models
             return now > this.MultiDeal.ValidFromDate 
                 && now < this.MultiDeal.ValidBeforeDate;
         }
-
-        /// <summary>
-        /// Creates a shallow copy of this product.
-        /// </summary>
-        /// <returns>A shallow copy of this object.</returns>
-        public Product ShallowCopy()
-        {
-            return (Product)this.MemberwiseClone();
-        }
     }
 }

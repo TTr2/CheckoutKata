@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,85 +8,87 @@ namespace CheckoutKata.Models
 {
     class ShoppingTrolleyDictionary : IShoppingTrolley
     {
-        private IProductRepository productTypesInTrolley;
-        private Dictionary<string, int> shoppingTrolley;
+        private Dictionary<string, List<Product>> shoppingTrolley;
 
         public ShoppingTrolleyDictionary()
         {
-            this.productTypesInTrolley = new ProductInventoryDictionary();
-            this.shoppingTrolley = new Dictionary<string, int>();
+            this.shoppingTrolley = new Dictionary<string, List<Product>>();
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.AddProduct(Product)"/>
+        /// <see cref="IProductRepository.Add(Product)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
-        public void AddProduct(Product product)
+        public void Add(Product product)
         {
-            int count;
-            bool present = this.shoppingTrolley.TryGetValue(product.Sku, out count);
-            if (present)
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
+            if (!this.shoppingTrolley.ContainsKey(product.Sku))
             {
-                this.shoppingTrolley[product.Sku] = count + 1;
+                this.shoppingTrolley.Add(product.Sku, new List<Product>());
             }
-            else
-            {
-                this.productTypesInTrolley.AddProduct(product);
-                this.shoppingTrolley.Add(product.Sku, 1);
-            }
+
+            this.shoppingTrolley[product.Sku].Add(product);
         }
 
         /// <summary>
-        /// <see cref="IShoppingTrolley.AddBulkProducts(Product, int)"/>
+        /// <see cref="IShoppingTrolley.AddBulk(Product, int)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
         /// <param name="units">The number of products to add.</param>
-        public void AddBulkProducts(Product product, int units)
+        public void AddBulk(Product product, int units)
         {
-            int count;
-            bool present = this.shoppingTrolley.TryGetValue(product.Sku, out count);
-            if (present)
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
+            if (!this.shoppingTrolley.ContainsKey(product.Sku))
             {
-                this.shoppingTrolley[product.Sku] = count + 1;
+                this.shoppingTrolley.Add(product.Sku, new List<Product>());
             }
-            else
+
+            for (int i=0; i < units; i++)
             {
-                this.productTypesInTrolley.AddProduct(product);
-                this.shoppingTrolley.Add(product.Sku, 1);
+                this.shoppingTrolley[product.Sku].Add(product);
             }
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.ContainsProduct(string)"/>
+        /// <see cref="IProductRepository.Contains(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
-        public bool ContainsProduct(string sku)
+        public bool Contains(string sku)
         {
-            return this.productTypesInTrolley.ContainsProduct(sku);
+            return this.shoppingTrolley.ContainsKey(sku);
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.GetProduct(string)"/>
+        /// <see cref="IProductRepository.Get(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns><see cref="Product"/></returns>
-        public Product GetProduct(string sku)
+        public Product Get(string sku)
         {
-            return this.productTypesInTrolley.GetProduct(sku);
+            Product product = null;
+            if (this.shoppingTrolley.ContainsKey(sku))
+            {
+                product = this.shoppingTrolley[sku][0];
+            }
+
+            return product;
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.GetAllProducts"/>
+        /// <see cref="IProductRepository.GetAll"/>
         /// </summary>
-        /// <returns><see cref="IProductRepository.GetAllProducts"/></returns>
-        public IList<Product> GetAllProducts()
+        /// <returns><see cref="IProductRepository.GetAll"/></returns>
+        public IList<Product> GetAll()
         {
-            IList<Product> products = new List<Product>();
-            foreach (Product product in this.productTypesInTrolley.GetAllProducts())
+            List<Product> products = null;
+
+            foreach (string sku in this.shoppingTrolley.Keys)
             {
-                for (int i = 0; i < this.shoppingTrolley[product.Sku]; i++)
+                foreach (Product product in this.shoppingTrolley[sku])
                 {
-                    products.Add(product.ShallowCopy());
+                    products.Add(product);
                 }
             }
 
@@ -95,24 +96,56 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IProductRepository.RemoveProduct(string)"
+        /// <see cref="IProductRepository.Remove(string)"
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <returns>Whether the product was successfully removed from the inventory.</returns>
-        public bool RemoveProduct(string sku)
+        public bool Remove(string sku)
         {
-            throw new NotImplementedException();
+            if (sku == null) return false;
+
+            if (this.shoppingTrolley.ContainsKey(sku))
+            {
+                this.shoppingTrolley[sku].RemoveAt(0);
+                if (this.shoppingTrolley[sku].Count == 0)
+                {
+                    this.shoppingTrolley.Remove(sku);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
-        /// <see cref="IShoppingTrolley.RemoveBulkProducts(string, int)"/>
+        /// <see cref="IShoppingTrolley.RemoveBulk(string, int)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <param name="units">The number of products to remove.</param>
         /// <returns>The number of products removed.</returns>
-        public int RemoveBulkProducts(string sku, int units)
+        public int RemoveBulk(string sku, int units)
         {
-            throw new NotImplementedException();
+            if (sku == null || units == 0) return 0;
+
+            if (this.shoppingTrolley.ContainsKey(sku))
+            {
+                int count = 0;
+                while (count < units || this.shoppingTrolley[sku].Count > 0)
+                {
+                    this.shoppingTrolley[sku].RemoveAt(0);
+                    count += 1;
+                }
+
+                if (this.shoppingTrolley[sku].Count == 0)
+                {
+                    this.shoppingTrolley.Remove(sku);
+                }
+
+                return count;
+            }
+
+            return 0;
         }
     }
 }

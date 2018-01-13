@@ -13,7 +13,7 @@ namespace CheckoutKata.Models
         /// </summary>
         /// <param name="sku"><see cref="Product"/></param>
         /// <param name="units">The number of units to add.</param>
-        void AddBulkProducts(Product product, int units);
+        void AddBulk(Product product, int units);
 
         /// <summary>
         /// Removes products in bulk from shopping trolley.
@@ -21,6 +21,6 @@ namespace CheckoutKata.Models
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <param name="units">The number of units to remove.</param>
         /// <returns>The number of items removed from the shopping trolley.</returns>
-        int RemoveBulkProducts(string sku, int units);
+        int RemoveBulk(string sku, int units);
     }
 }
