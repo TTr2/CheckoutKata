@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckoutKata.Models
 {
-    class ShoppingTrolleyDictionary : IShoppingTrolley
+    class ShoppingTrolleyDictionary : IProductRepositoryBulkActions
     {
         private Dictionary<string, List<Product>> shoppingTrolley;
 
@@ -32,7 +32,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IShoppingTrolley.AddBulk(Product, int)"/>
+        /// <see cref="IProductRepositoryBulkActions.AddBulk(Product, int)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
         /// <param name="units">The number of products to add.</param>
@@ -119,7 +119,7 @@ namespace CheckoutKata.Models
         }
 
         /// <summary>
-        /// <see cref="IShoppingTrolley.RemoveBulk(string, int)"/>
+        /// <see cref="IProductRepositoryBulkActions.RemoveBulk(string, int)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
         /// <param name="units">The number of products to remove.</param>

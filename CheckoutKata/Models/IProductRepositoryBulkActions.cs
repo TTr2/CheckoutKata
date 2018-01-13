@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckoutKata.Models
 {
-    interface IShoppingTrolley : IProductRepository
+    interface IProductRepositoryBulkActions : IProductRepository
     {
         /// <summary>
         /// Adds products in bulk to Shopping Trolley.
