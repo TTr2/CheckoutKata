@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CheckoutKata.Models;
+using CheckoutKata.Controllers;
 
 namespace CheckoutKataTests
 {
@@ -66,7 +67,7 @@ namespace CheckoutKataTests
         public void Create_inventory_test()
         {
             //Setup
-            IProductRepository inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryController();
 
             // Assert
             Assert.IsNotNull(inventory);
@@ -76,7 +77,7 @@ namespace CheckoutKataTests
         public void Add_product_to_inventory_test()
         {
             // Setup
-            IProductRepository inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryController();
 
             // Act
             inventory.Add(productA);
@@ -89,7 +90,7 @@ namespace CheckoutKataTests
         public void Retrieve_product_from_inventory_test()
         {
             // Setup
-            IProductRepository inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryController();
 
             // Act
             inventory.Add(productA);
@@ -104,7 +105,7 @@ namespace CheckoutKataTests
         public void Check_product_is_in_inventory_test()
         {
             // Setup
-            IProductRepository inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryController();
             string sku = "A";
 
             // Act
@@ -119,7 +120,7 @@ namespace CheckoutKataTests
         public void Remove_product_from_inventory_test()
         {
             // Setup
-            IProductRepository inventory = new ProductInventoryDictionary();
+            IProductRepository inventory = new ProductInventoryController();
             inventory.Add(productA);
             inventory.Add(productB);
 

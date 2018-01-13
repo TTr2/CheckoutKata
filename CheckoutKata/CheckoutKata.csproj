@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProductInventoryController.cs" />
     <Compile Include="Models\IProductRepository.cs" />
     <Compile Include="Models\IShoppingTrolley.cs" />
     <Compile Include="Models\MultiDeal.cs" />
