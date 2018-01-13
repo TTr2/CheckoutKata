@@ -70,5 +70,15 @@ namespace CheckoutKata.Models
         {
             return this.inventory.Remove(sku);
         }
+
+        /// <summary>
+        /// <see cref="IProductRepository.Count(string)"/>
+        /// </summary>
+        /// <param name="sku">The SKU of the Products to count.</param>
+        /// <returns>The number of products with matching SKU in the repository.</returns>
+        public int Count(string sku)
+        {
+            return this.inventory.ContainsKey(sku) ? 1 : 0;
+        }
     }
 }

@@ -11,13 +11,18 @@ namespace CheckoutKata.Controllers
     {
         IProductRepositoryBulkActions shoppingTrolley;
 
+        public ShoppingTrolleyController()
+        {
+            this.shoppingTrolley = new ShoppingTrolleyDictionary();
+        }
+
         /// <summary>
         /// <see cref="IProductRepository.Add(Product)"/>
         /// </summary>
         /// <param name="product"><see cref="Product"/></param>
         public void Add(Product product)
         {
-            this.shoppingTrolley = new ShoppingTrolleyDictionary();
+            this.shoppingTrolley.Add(product);
         }
 
         /// <summary>
@@ -37,6 +42,16 @@ namespace CheckoutKata.Controllers
         public bool Contains(string sku)
         {
             return this.shoppingTrolley.Contains(sku);
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.Count(string)"/>
+        /// </summary>
+        /// <param name="sku">The SKU of the product to count in the repository.</param>
+        /// <returns>The number of products in repository with matching SKU.</returns>
+        public int Count(string sku)
+        {
+            return this.shoppingTrolley.Count(sku);
         }
 
         /// <summary>

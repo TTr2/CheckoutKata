@@ -133,5 +133,21 @@ namespace CheckoutKataTests
             Assert.IsTrue(inventory.Remove(productB.Sku));
             Assert.IsFalse(inventory.Remove("MadeUpSKU"));
         }
+
+        [TestMethod]
+        public void Count_products_in_inventory_test()
+        {
+            // Setup
+            IProductRepository inventory = new ShoppingTrolleyController();
+            inventory.Add(productA);
+
+            // Act
+            int count = inventory.Count(productA.Sku);
+            int notAddedCount = inventory.Count(productB.Sku);
+
+            // Assert
+            Assert.AreEqual(1, count);
+            Assert.AreEqual(0, notAddedCount);
+        }
     }
 }

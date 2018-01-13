@@ -43,5 +43,12 @@ namespace CheckoutKata.Models
         /// <param name="sku">The SKU of the product to remove.</param>
         /// <returns>Whether this product was successfully removed from the repository.</returns>
         bool Remove(string sku);
+
+        /// <summary>
+        /// Gets the number of a given product in repository.
+        /// </summary>
+        /// <param name="sku">THe SKU of the products to count.</param>
+        /// <returns>The number of the given Products in the repository.</returns>
+        int Count(string sku);
     }
 }

@@ -43,8 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ProductInventoryController.cs" />
+    <Compile Include="Controllers\ShoppingTrolleyController.cs" />
     <Compile Include="Models\IProductRepository.cs" />
-    <Compile Include="Models\IShoppingTrolley.cs" />
+    <Compile Include="Models\IProductRepositoryBulkActions.cs" />
     <Compile Include="Models\MultiDeal.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductInventoryDictionary.cs" />

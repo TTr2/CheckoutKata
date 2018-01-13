@@ -82,7 +82,7 @@ namespace CheckoutKata.Models
         /// <returns><see cref="IProductRepository.GetAll"/></returns>
         public IList<Product> GetAll()
         {
-            List<Product> products = null;
+            List<Product> products = new List<Product>();
 
             foreach (string sku in this.shoppingTrolley.Keys)
             {
@@ -114,8 +114,10 @@ namespace CheckoutKata.Models
 
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace CheckoutKata.Models
             if (this.shoppingTrolley.ContainsKey(sku))
             {
                 int count = 0;
-                while (count < units || this.shoppingTrolley[sku].Count > 0)
+                while (this.shoppingTrolley[sku].Count > 0 && count < units)
                 {
                     this.shoppingTrolley[sku].RemoveAt(0);
                     count += 1;
@@ -144,8 +146,27 @@ namespace CheckoutKata.Models
 
                 return count;
             }
+            else
+            {
+                return 0;
+            }
+        }
 
-            return 0;
+        /// <summary>
+        /// <see cref="IProductRepository.Count(string)"/>
+        /// </summary>
+        /// <param name="sku">The SKU of the Products to count.</param>
+        /// <returns>The number of products with matching SKU in the repository.</returns>
+        public int Count(string sku)
+        {
+            if (this.shoppingTrolley.ContainsKey(sku))
+            {
+                return this.shoppingTrolley[sku].Count();
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

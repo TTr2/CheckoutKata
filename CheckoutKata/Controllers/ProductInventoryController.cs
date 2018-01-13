@@ -35,6 +35,16 @@ namespace CheckoutKata.Controllers
         }
 
         /// <summary>
+        /// <see cref="IProductRepository.Count(string)"/>
+        /// </summary>
+        /// <param name="sku">The SKU of the product to count in the repository.</param>
+        /// <returns>The number of products in repository with matching SKU.</returns>
+        public int Count(string sku)
+        {
+            return this.productRepository.Count(sku);
+        }
+
+        /// <summary>
         /// <see cref="IProductRepository.Get(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>
