@@ -42,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ProductInventoryController.cs" />
     <Compile Include="Controllers\ShoppingTrolleyController.cs" />
+    <Compile Include="Models\CheckoutWithTrolleyContentsAsIList.cs" />
+    <Compile Include="Models\ICheckout.cs" />
     <Compile Include="Models\IProductRepository.cs" />
     <Compile Include="Models\IProductRepositoryBulkActions.cs" />
     <Compile Include="Models\MultiDeal.cs" />
