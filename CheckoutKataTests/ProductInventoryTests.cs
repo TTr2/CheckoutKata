@@ -97,6 +97,7 @@ namespace CheckoutKataTests
 
             // Assert
             Assert.AreEqual(productA, retrievedProduct);
+            inventory.Get("MadeUpSku");
         }
 
         [TestMethod]
@@ -111,6 +112,7 @@ namespace CheckoutKataTests
 
             // Assert
             Assert.IsTrue(inventory.Contains(sku));
+            Assert.IsFalse(inventory.Contains("MadeUpSku"));
         }
 
         [TestMethod]
@@ -118,14 +120,17 @@ namespace CheckoutKataTests
         {
             // Setup
             IProductRepository inventory = new ProductInventoryDictionary();
+            inventory.Add(productA);
+            inventory.Add(productB);
 
             // Act
-            inventory.Add(productA);
             Assert.IsTrue(inventory.Contains(productA.Sku));
             inventory.Remove(productA.Sku);
 
             // Assert
             Assert.IsFalse(inventory.Contains(productA.Sku));
+            Assert.IsTrue(inventory.Remove(productB.Sku));
+            Assert.IsFalse(inventory.Remove("MadeUpSKU"));
         }
     }
 }
