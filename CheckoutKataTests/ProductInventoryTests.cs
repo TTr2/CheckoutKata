@@ -149,5 +149,28 @@ namespace CheckoutKataTests
             Assert.AreEqual(1, count);
             Assert.AreEqual(0, notAddedCount);
         }
+
+        [TestMethod]
+        public void ProductInventory_replace_product_in_inventory_test()
+        {
+            // Setup
+            IProductRepository inventory = new ProductInventoryController();
+            inventory.Add(productA);
+            int originalProductPrice = inventory.Get(productA.Sku).Price;
+            int newPriceToModify = originalProductPrice + 20;
+            Product modifiedProduct = new Product(productA.Sku, newPriceToModify);
+
+            // Act
+            Assert.IsTrue(inventory.Contains(productA.Sku));
+            bool productWasReplaced = inventory.Replace(modifiedProduct);
+            bool productNotReplaced = inventory.Replace(new Product("MadeUpSku", 99));
+
+            // Assert
+            Assert.IsTrue(productWasReplaced);
+            Assert.IsFalse(productNotReplaced);
+            Assert.IsTrue(inventory.Contains(productA.Sku));
+            Assert.AreEqual(newPriceToModify, inventory.Get(productA.Sku).Price);
+            Assert.AreNotEqual(originalProductPrice, newPriceToModify);
+        }
     }
 }
