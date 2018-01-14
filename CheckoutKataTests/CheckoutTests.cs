@@ -85,7 +85,7 @@ namespace CheckoutKataTests
             checkout.Scan(product);
 
             // Assert
-            Assert.AreEqual(1, checkout.Count());            
+            Assert.AreEqual(1, checkout.CountAll());            
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace CheckoutKataTests
             }
 
             // Assert
-            Assert.AreEqual(trolleyContents.Count, checkout.Count());
+            Assert.AreEqual(trolleyContents.Count, checkout.CountAll());
         }
 
         [TestMethod]
@@ -114,11 +114,11 @@ namespace CheckoutKataTests
             // Act
             Product product = productInventory.Get("A");
             checkout.Scan(product);
-            Assert.AreEqual(1, checkout.Count());
+            Assert.AreEqual(1, checkout.CountAll());
 
             // Assert
             checkout.Remove(product);
-            Assert.AreEqual(0, checkout.Count());
+            Assert.AreEqual(0, checkout.CountAll());
 
         }
 

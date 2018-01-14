@@ -51,8 +51,14 @@ namespace CheckoutKata.Models
         /// <summary>
         /// Gets the number of a given product in repository.
         /// </summary>
-        /// <param name="sku">THe SKU of the products to count.</param>
+        /// <param name="sku">The SKU of the products to count.</param>
         /// <returns>The number of the given Products in the repository.</returns>
         int Count(string sku);
+
+        /// <summary>
+        /// Returns the total number of products in repository.
+        /// </summary>
+        /// <returns>The total number of Products in repository.</returns>
+        int CountAll();
     }
 }

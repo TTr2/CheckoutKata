@@ -51,6 +51,15 @@
         }
 
         /// <summary>
+        /// <see cref="IProductRepository.CountAll"/>
+        /// </summary>
+        /// <returns>The total number of Products in trolley.</returns>
+        public int CountAll()
+        {
+            return shoppingTrolley.CountAll();
+        }
+
+        /// <summary>
         /// <see cref="IProductRepository.Get(string)"/>
         /// </summary>
         /// <param name="sku"><see cref="Product.Sku"/></param>

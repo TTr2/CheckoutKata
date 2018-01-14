@@ -16,9 +16,14 @@ namespace CheckoutKata.Controllers
             this.checkout = new Checkout();
         }
 
-        public int Count()
+        public int Count(string sku)
         {
-            return checkout.Count();
+            return checkout.Count(sku);
+        }
+
+        public int CountAll()
+        {
+            return checkout.CountAll();
         }
 
         public int GetTotalPrice()

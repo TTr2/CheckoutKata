@@ -28,9 +28,16 @@ namespace CheckoutKata.Models
         int GetTotalPrice();
 
         /// <summary>
-        /// Returns the number of Products scanned.
+        /// Gets the number of a given <see cref="Product"/> that have been scanned.
         /// </summary>
-        /// <returns>the number of Products scanned.</returns>
-        int Count();
+        /// <param name="sku">THe SKU of the products to count.</param>
+        /// <returns>The number of the given Products in the repository.</returns>
+        int Count(string sku);
+
+        /// <summary>
+        /// Returns the total number of Products scanned.
+        /// </summary>
+        /// <returns>The total number of Products scanned.</returns>
+        int CountAll();
     }
 }

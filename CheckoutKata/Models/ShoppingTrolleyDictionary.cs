@@ -67,13 +67,7 @@ namespace CheckoutKata.Models
         /// <returns><see cref="Product"/></returns>
         public Product Get(string sku)
         {
-            Product product = null;
-            if (this.shoppingTrolley.ContainsKey(sku))
-            {
-                product = this.shoppingTrolley[sku][0];
-            }
-
-            return product;
+            return this.shoppingTrolley.ContainsKey(sku) ? this.shoppingTrolley[sku][0] : null;
         }
 
         /// <summary>
@@ -159,14 +153,7 @@ namespace CheckoutKata.Models
         /// <returns>The number of products with matching SKU in the repository.</returns>
         public int Count(string sku)
         {
-            if (this.shoppingTrolley.ContainsKey(sku))
-            {
-                return this.shoppingTrolley[sku].Count();
-            }
-            else
-            {
-                return 0;
-            }
+            return this.shoppingTrolley.ContainsKey(sku) ? this.shoppingTrolley[sku].Count() : 0;
         }
 
         /// <summary>
@@ -187,6 +174,15 @@ namespace CheckoutKata.Models
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.CountAll"/>
+        /// </summary>
+        /// <returns>The total number of Products in trolley.</returns>
+        public int CountAll()
+        {
+            return this.shoppingTrolley.Values.Sum(list => list.Count);
         }
     }
 }

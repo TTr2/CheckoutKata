@@ -51,6 +51,15 @@
         }
 
         /// <summary>
+        /// <see cref="IProductRepository.CountAll"/>.
+        /// </summary>
+        /// <returns>The total number of Products in inventory.</returns>
+        public int CountAll()
+        {
+            return productRepository.CountAll();
+        }
+
+        /// <summary>
         /// <see cref="IProductRepository.Get(string)"/>
         /// </summary>
         /// <param name="sku">The <see cref="Product.Sku"/> of the <see cref="Product"/> to retrieve.</param>

@@ -26,6 +26,7 @@
         /// <param name="product"><see cref="Product"/></param>
         public void Add(Product product)
         {
+            if (product == null) throw new ArgumentNullException(nameof(product));
             this.inventory.Add(product.Sku, product);
         }
 
@@ -86,7 +87,26 @@
         /// <returns>Whether the replacement was successful.</returns>
         public bool Replace(Product product)
         {
-            throw new NotImplementedException();
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
+            if (this.inventory.ContainsKey(product.Sku))
+            {
+                this.inventory[product.Sku] = product;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.CountAll"/>.
+        /// </summary>
+        /// <returns>The total number of Products in inventory.</returns>
+        public int CountAll()
+        {
+            return this.inventory.Values.Count;
         }
     }
 }
