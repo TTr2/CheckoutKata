@@ -145,22 +145,22 @@ namespace CheckoutKataTests
             ICheckout checkout = new CheckoutController(productInventory);
             string testSku = "A";
             Product product = productInventory.Get(testSku);
-            int productInstanceOriginalPrice = product.Price;
-            int inventoryOriginalPrice = productInventory.Get(product.Sku).Price;
+            int originalInventoryPrice = product.Price;
             int multiplier = 3;
+            int newPriceToSet = product.Price * multiplier;
 
             // Act
             checkout.Scan(product);
-            Assert.AreEqual(productInstanceOriginalPrice, checkout.GetTotalPrice());
-            productInventory.Replace(new Product(testSku, productInstanceOriginalPrice * multiplier));
+            productInventory.Replace(new Product(product.Sku, newPriceToSet));
             int newInventoryPrice = productInventory.Get(product.Sku).Price;
+            int totalPrice = checkout.GetTotalPrice();
 
             // Assert
             // Changing inventory instance does affect checkout
-            Assert.AreNotEqual(productInstanceOriginalPrice, newInventoryPrice);
-            Assert.AreNotEqual(productInstanceOriginalPrice, checkout.GetTotalPrice());
-            Assert.AreEqual(productInstanceOriginalPrice * multiplier, checkout.GetTotalPrice());
-            Assert.AreEqual(productInventory.Get(testSku).Price, checkout.GetTotalPrice());
+            Assert.AreNotEqual(originalInventoryPrice, newInventoryPrice);
+            Assert.AreNotEqual(originalInventoryPrice, totalPrice);
+            Assert.AreEqual(newPriceToSet, totalPrice);
+            Assert.AreEqual(productInventory.Get(testSku).Price, totalPrice);
         }
 
         [TestMethod]
@@ -225,11 +225,11 @@ namespace CheckoutKataTests
             Assert.AreEqual(multiDealA.MultiDealPrice, totalPriceBeforeChange);
             // Change inventory multiDeal
             productInventory.Replace(new Product(testSku, inventoryProductA.Price, newMultiDeal));
-
+            int totalPriceAfterChange = checkout.GetTotalPrice();
+            
             // Assert
             // prove that offer change is reflected
-            Assert.AreNotEqual(totalPriceBeforeChange, checkout.GetTotalPrice());
-            int totalPriceAfterChange = checkout.GetTotalPrice();
+            Assert.AreNotEqual(totalPriceBeforeChange, totalPriceAfterChange);
             Assert.AreEqual(multiDealA.MultiDealPrice * totalPriceModifier, totalPriceAfterChange);
         }
 

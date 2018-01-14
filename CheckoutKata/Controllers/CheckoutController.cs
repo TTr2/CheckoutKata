@@ -1,9 +1,4 @@
 ﻿using CheckoutKata.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CheckoutKata.Controllers
 {
@@ -14,6 +9,11 @@ namespace CheckoutKata.Controllers
         public CheckoutController(IProductRepository productInventory)
         {
             this.checkout = new Checkout(productInventory);
+        }
+
+        public int CompleteCheckout()
+        {
+            return checkout.CompleteCheckout();
         }
 
         public int Count(string sku)

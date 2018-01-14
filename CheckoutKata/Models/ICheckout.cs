@@ -18,14 +18,22 @@ namespace CheckoutKata.Models
         /// Removes an item from the total price.
         /// </summary>
         /// <param name="product">The <see cref="Product"/> to remove.</param>
-        /// <returns>Whether the item was removed.</returns>
+        /// <returns>Whether the product was removed.</returns>
         bool Remove(Product product);
 
         /// <summary>
-        /// Calculate and return the total price of all items including special offers.
+        /// Calculate and return the total price of all products including special offers.
         /// </summary>
-        /// <returns>The total price of all items including special offers.</returns>
+        /// <returns>The total price of all products including special offers.</returns>
         int GetTotalPrice();
+
+        /// <summary>
+        /// Empties scanned products list and adds processed products to a collction of 
+        /// completed transactions. Processed Products are stored as <see cref="Product"/> instances to retain 
+        /// the price and special offer conditions active at time of sale.
+        /// </summary>
+        /// <returns>The total price of all products including </returns>
+        int CompleteCheckout();
 
         /// <summary>
         /// Gets the number of a given <see cref="Product"/> that have been scanned.

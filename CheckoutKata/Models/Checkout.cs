@@ -14,8 +14,8 @@
     {
         IProductRepository productInventory; // Temporary DI, replace with ServiceLocator
 
-        private Dictionary<string, IList<Product>> scannedProducts;
-        private IList<Product> processedProducts;
+        private Dictionary<string, IList<string>> scannedProducts;
+        private Dictionary<int, IList<Product>> completedTransactions;
 
         /// <summary>
         /// Constructor for an instance of a checkout object.
@@ -23,8 +23,8 @@
         public Checkout(IProductRepository productInventory)
         {
             this.productInventory = productInventory;
-            this.scannedProducts = new Dictionary<string, IList<Product>>();
-            this.processedProducts = new List<Product>();
+            this.scannedProducts = new Dictionary<string, IList<string>>();
+            this.completedTransactions = new Dictionary<int, IList<Product>>();
         }
 
         /// <summary>
@@ -52,40 +52,59 @@
         public int GetTotalPrice()
         {
             int totalPrice = 0;
-
-
-//            for(int i = this.scannedProducts.Values.Count - 1; i >= 0; i--)
-
-//            IList<Product> products in this.scannedProducts.Values)
-            foreach(KeyValuePair<string, IList<Product>> products in this.scannedProducts) 
+            IList<Product> processedProducts = new List<Product>();
+            foreach(KeyValuePair<string, IList<string>> products in this.scannedProducts) 
             {
                 Product productMaster = this.productInventory.Get(products.Key);
                 MultiDeal multiDealMaster = productMaster.MultiDeal;
+                int productsCount = products.Value.Count;
 
                 if (productMaster.IsMultiDealValid(DateTime.Now))
                 {
-                    while (products.Value.Count >= multiDealMaster.Units)
+                    while (productsCount >= multiDealMaster.Units)
                     {
-
                         totalPrice += multiDealMaster.MultiDealPrice;
-                        int startingIndex = products.Value.Count - 1;
-                        for (int i = startingIndex; i > startingIndex - multiDealMaster.Units; i--)
-                        {
-                            products.Value.RemoveAt(i);
-                            this.processedProducts.Add(productMaster);
-                        }
+                        productsCount -= multiDealMaster.Units;
                     }
                 }
 
-                while (products.Value.Count > 0)
+                while (productsCount > 0)
                 {
                     totalPrice += productMaster.Price;
-                    this.scannedProducts[productMaster.Sku].RemoveAt(products.Value.Count - 1);
-                    this.processedProducts.Add(productMaster);
+                    productsCount -= 1;
                 }
             }
 
             return totalPrice;            
+        }
+
+        /// <summary>
+        /// <see cref="ICheckout.CompleteCheckout"/>
+        /// </summary>
+        /// <returns>The total price of scanned products including special offers.</returns>
+        public int CompleteCheckout()
+        {
+            int totalPrice = this.GetTotalPrice();
+
+            IList<Product> processedProducts = new List<Product>();
+            foreach (KeyValuePair<string, IList<string>> products in this.scannedProducts)
+            {
+                Product productMaster = this.productInventory.Get(products.Key);
+                for (int i=0; i < products.Value.Count; i++)
+                {
+                    processedProducts.Add(productMaster);
+                }
+            }
+
+            if (totalPrice > 0)
+            {
+                int nextId = this.completedTransactions.Values.Count() + 1;
+                this.completedTransactions.Add(nextId, processedProducts);
+            }
+
+            this.scannedProducts = new Dictionary<string, IList<string>>();
+
+            return totalPrice;
         }
 
         /// <summary>
@@ -99,7 +118,7 @@
 
             if (this.scannedProducts.ContainsKey(product.Sku))
             {
-                return this.scannedProducts[product.Sku].Remove(product);
+                return this.scannedProducts[product.Sku].Remove(product.Sku);
             }
             else
             {
@@ -107,16 +126,20 @@
             }
         }
 
+        /// <summary>
+        /// Adds a product SKU to this checkout's list of scanend products. 
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to scan.</param>
         public void Scan(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
 
             if (!this.scannedProducts.ContainsKey(product.Sku))
             {
-                this.scannedProducts.Add(product.Sku, new List<Product>());
+                this.scannedProducts.Add(product.Sku, new List<string>());
             }
 
-            this.scannedProducts[product.Sku].Add(product);
+            this.scannedProducts[product.Sku].Add(product.Sku);
         }
     }
 }
