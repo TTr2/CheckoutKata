@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckoutKata.Models
+﻿namespace CheckoutKata.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Represents a shopping trolley repository of products.
+    /// </summary>
     class ShoppingTrolleyDictionary : IProductRepositoryBulkActions
     {
         private Dictionary<string, List<Product>> shoppingTrolley;
 
+        /// <summary>
+        /// Constructor for a shopping trolley instance.
+        /// </summary>
         public ShoppingTrolleyDictionary()
         {
             this.shoppingTrolley = new Dictionary<string, List<Product>>();

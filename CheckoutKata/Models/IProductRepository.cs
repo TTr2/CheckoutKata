@@ -1,5 +1,4 @@
-﻿using System;
-namespace CheckoutKata.Models
+﻿namespace CheckoutKata.Models
 {
     using System.Collections.Generic;
 

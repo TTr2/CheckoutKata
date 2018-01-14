@@ -1,14 +1,11 @@
 ﻿namespace CheckoutKata.Models
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
-    /// 
+    /// Represents the functionality of a supermarket checkout.
     /// </summary>
     class Checkout : ICheckout
     {

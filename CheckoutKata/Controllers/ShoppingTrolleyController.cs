@@ -3,6 +3,9 @@
     using CheckoutKata.Models;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// A Controller for managing a shopping trolley repository.
+    /// </summary>
     class ShoppingTrolleyController : IProductRepositoryBulkActions
     {
         IProductRepositoryBulkActions shoppingTrolley;

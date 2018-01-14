@@ -1,5 +1,8 @@
 ﻿namespace CheckoutKata.Models
 {
+    /// <summary>
+    /// Interface for a repository of product that require adding/removing in bulk operations.
+    /// </summary>
     interface IProductRepositoryBulkActions : IProductRepository
     {
         /// <summary>

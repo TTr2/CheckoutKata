@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckoutKata.Models
+﻿namespace CheckoutKata.Models
 {
+    /// <summary>
+    /// Interface representing the actions required for a supermarket checkout.
+    /// </summary>
     interface ICheckout
     {
         /// <summary>
