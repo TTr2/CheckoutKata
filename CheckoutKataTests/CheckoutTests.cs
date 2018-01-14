@@ -68,7 +68,7 @@ namespace CheckoutKataTests
         {
             // Setup
             // Act
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
 
             // Assert
             Assert.IsNotNull(checkout);
@@ -78,7 +78,7 @@ namespace CheckoutKataTests
         public void Checkout_scan_item_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
 
             // Act
             Product product = productInventory.Get("A");
@@ -92,7 +92,7 @@ namespace CheckoutKataTests
         public void Checkout_scan_items_in_bulk_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             IList<Product> trolleyContents = shoppingTrolley.GetAll();
 
             // Act
@@ -109,7 +109,7 @@ namespace CheckoutKataTests
         public void Checkout_remove_item_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             
             // Act
             Product product = productInventory.Get("A");
@@ -126,7 +126,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_single_item_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product product = productInventory.Get("A");
             int price = product.Price;
             checkout.Scan(product);
@@ -142,7 +142,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_instance()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product product = productInventory.Get("A");
             int productInstanceOriginalPrice = product.Price;
             int inventoryOriginalPrice = productInventory.Get(product.Sku).Price;
@@ -159,7 +159,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_inventory()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             string testSku = "A";
             Product product = productInventory.Get(testSku);
             int productInstanceOriginalPrice = product.Price;
@@ -184,7 +184,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_mixed_single_items_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product productA = productInventory.Get("A");
             Product productB = productInventory.Get("B");
 
@@ -205,7 +205,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_bulk_matching_offer_same_item_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product inventoryProductA = productInventory.Get("A");
             int priceA = inventoryProductA.Price;
             MultiDeal multiDealA = inventoryProductA.MultiDeal;
@@ -225,7 +225,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_bulk_matching_offer_same_item_at_checkout_inc_offer_change()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             string testSku = "A";
             Product inventoryProductA = productInventory.Get(testSku);
             MultiDeal multiDealA = inventoryProductA.MultiDeal;
@@ -254,7 +254,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_bulk_matching_offer_mixed_items_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product inventoryProductA = productInventory.Get("A");
             MultiDeal multiDealA = inventoryProductA.MultiDeal;
             for (int i = 0; i < multiDealA.Units; i++)
@@ -280,7 +280,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_bulk_matching_offer_plus_misc_same_item_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product productA = productInventory.Get("A");
             int priceA = productA.Price;
             MultiDeal multiDealA = productA.MultiDeal;
@@ -302,7 +302,7 @@ namespace CheckoutKataTests
         public void Checkout_get_total_price_bulk_matching_offer_plus_misc_mixed_items_at_checkout()
         {
             // Setup
-            ICheckout checkout = new CheckoutController();
+            ICheckout checkout = new CheckoutController(productInventory);
             Product productA = productInventory.Get("A");
             MultiDeal multiDealA = productA.MultiDeal;
             for (int i = 0; i < multiDealA.Units; i++)

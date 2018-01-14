@@ -11,9 +11,9 @@ namespace CheckoutKata.Controllers
     {
         ICheckout checkout;
 
-        public CheckoutController()
+        public CheckoutController(IProductRepository productInventory)
         {
-            this.checkout = new Checkout();
+            this.checkout = new Checkout(productInventory);
         }
 
         public int Count(string sku)

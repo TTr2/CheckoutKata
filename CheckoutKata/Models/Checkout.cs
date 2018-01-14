@@ -12,14 +12,19 @@
     /// </summary>
     class Checkout : ICheckout
     {
+        IProductRepository productInventory; // Temporary DI, replace with ServiceLocator
+
         private Dictionary<string, IList<Product>> scannedProducts;
+        private IList<Product> processedProducts;
 
         /// <summary>
         /// Constructor for an instance of a checkout object.
         /// </summary>
-        public Checkout()
+        public Checkout(IProductRepository productInventory)
         {
+            this.productInventory = productInventory;
             this.scannedProducts = new Dictionary<string, IList<Product>>();
+            this.processedProducts = new List<Product>();
         }
 
         /// <summary>
@@ -46,7 +51,41 @@
         /// <returns>The total price of scanned products including special offers.</returns>
         public int GetTotalPrice()
         {
-            throw new NotImplementedException();
+            int totalPrice = 0;
+
+
+//            for(int i = this.scannedProducts.Values.Count - 1; i >= 0; i--)
+
+//            IList<Product> products in this.scannedProducts.Values)
+            foreach(KeyValuePair<string, IList<Product>> products in this.scannedProducts) 
+            {
+                Product productMaster = this.productInventory.Get(products.Key);
+                MultiDeal multiDealMaster = productMaster.MultiDeal;
+
+                if (productMaster.IsMultiDealValid(DateTime.Now))
+                {
+                    while (products.Value.Count >= multiDealMaster.Units)
+                    {
+
+                        totalPrice += multiDealMaster.MultiDealPrice;
+                        int startingIndex = products.Value.Count - 1;
+                        for (int i = startingIndex; i > startingIndex - multiDealMaster.Units; i--)
+                        {
+                            products.Value.RemoveAt(i);
+                            this.processedProducts.Add(productMaster);
+                        }
+                    }
+                }
+
+                while (products.Value.Count > 0)
+                {
+                    totalPrice += productMaster.Price;
+                    this.scannedProducts[productMaster.Sku].RemoveAt(products.Value.Count - 1);
+                    this.processedProducts.Add(productMaster);
+                }
+            }
+
+            return totalPrice;            
         }
 
         /// <summary>
