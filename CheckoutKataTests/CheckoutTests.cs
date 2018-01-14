@@ -299,6 +299,7 @@ namespace CheckoutKataTests
             {
                 checkout.Scan(productB);
             }
+            checkout.Scan(productB);
             int expectedPrice = multiDealA.MultiDealPrice + productA.Price + multiDealB.MultiDealPrice + productB.Price;
 
             // Act
