@@ -60,7 +60,7 @@ namespace CheckoutKataTests
         #endregion
 
         [TestMethod]
-        public void Create_product()
+        public void Product_create_product()
         {
             //Setup
             Product productNotNullMultiDeal;
@@ -76,7 +76,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_sku_test()
+        public void Product_retrieve_product_sku_test()
         {
             // Setup
             string sku = "A";
@@ -89,7 +89,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_price_test()
+        public void Product_retrieve_product_price_test()
         {
             // Setup
             int price = 50;
@@ -102,7 +102,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Update_product_price_test()
+        public void Product_update_product_price_test()
         {
             // Setup
             int price = 50;
@@ -118,7 +118,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_offer_test()
+        public void Product_retrieve_product_offer_test()
         {
             // Setup
             Product productNotNullMultiDeal;
@@ -137,7 +137,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Replace_product_offer_test()
+        public void Product_replace_product_offer_test()
         {
             // Setup
             MultiDeal multiDeal_1 = new MultiDeal();
@@ -153,7 +153,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Check_product_offer_is_valid_test()
+        public void Product_check_product_offer_is_valid_test()
         {
             // Setup
             TimeSpan interval = new TimeSpan(2, 0, 0, 0);

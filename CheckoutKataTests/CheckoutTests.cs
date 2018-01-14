@@ -64,7 +64,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Create_checkout()
+        public void Checkout_create_checkout()
         {
             // Setup
             // Act
@@ -75,7 +75,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Scan_item_at_checkout()
+        public void Checkout_scan_item_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -89,7 +89,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Scan_items_in_bulk_at_checkout()
+        public void Checkout_scan_items_in_bulk_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -106,7 +106,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Remove_item_at_checkout()
+        public void Checkout_remove_item_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -123,7 +123,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_single_item_at_checkout()
+        public void Checkout_get_total_price_single_item_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -139,7 +139,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_single_item_at_checkout_inc_price_change_of_instance()
+        public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_instance()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -156,7 +156,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_single_item_at_checkout_inc_price_change_of_inventory()
+        public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_inventory()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -181,7 +181,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_mixed_single_items_at_checkout()
+        public void Checkout_get_total_price_mixed_single_items_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -202,7 +202,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_bulk_matching_offer_same_item_at_checkout()
+        public void Checkout_get_total_price_bulk_matching_offer_same_item_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -222,7 +222,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_bulk_matching_offer_same_item_at_checkout_inc_offer_change()
+        public void Checkout_get_total_price_bulk_matching_offer_same_item_at_checkout_inc_offer_change()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -251,7 +251,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_bulk_matching_offer_mixed_items_at_checkout()
+        public void Checkout_get_total_price_bulk_matching_offer_mixed_items_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -277,7 +277,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_bulk_matching_offer_plus_misc_same_item_at_checkout()
+        public void Checkout_get_total_price_bulk_matching_offer_plus_misc_same_item_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();
@@ -299,7 +299,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Get_total_price_bulk_matching_offer_plus_misc_mixed_items_at_checkout()
+        public void Checkout_get_total_price_bulk_matching_offer_plus_misc_mixed_items_at_checkout()
         {
             // Setup
             ICheckout checkout = new CheckoutController();

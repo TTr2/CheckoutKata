@@ -64,7 +64,7 @@ namespace CheckoutKataTests
         #endregion
 
         [TestMethod]
-        public void Create_inventory_test()
+        public void ProductInventory_create_inventory_test()
         {
             //Setup
             IProductRepository inventory = new ProductInventoryController();
@@ -74,7 +74,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Add_product_to_inventory_test()
+        public void ProductInventory_add_product_to_inventory_test()
         {
             // Setup
             IProductRepository inventory = new ProductInventoryController();
@@ -87,7 +87,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_from_inventory_test()
+        public void ProductInventory_retrieve_product_from_inventory_test()
         {
             // Setup
             IProductRepository inventory = new ProductInventoryController();
@@ -102,7 +102,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Check_product_is_in_inventory_test()
+        public void ProductInventory_check_product_is_in_inventory_test()
         {
             // Setup
             IProductRepository inventory = new ProductInventoryController();
@@ -117,7 +117,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Remove_product_from_inventory_test()
+        public void ProductInventory_remove_product_from_inventory_test()
         {
             // Setup
             IProductRepository inventory = new ProductInventoryController();
@@ -135,7 +135,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Count_products_in_inventory_test()
+        public void ProductInventory_count_products_in_inventory_test()
         {
             // Setup
             IProductRepository inventory = new ShoppingTrolleyController();

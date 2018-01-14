@@ -64,7 +64,7 @@ namespace CheckoutKataTests
         #endregion
 
         [TestMethod]
-        public void Create_shopping_trolley()
+        public void ShoppingTrolley_create_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -76,7 +76,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Add_product_to_shopping_trolley()
+        public void ShoppingTrolley_add_product_to_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -89,7 +89,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Add_products_in_bulk_to_shopping_trolley()
+        public void ShoppingTrolley_add_products_in_bulk_to_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -102,7 +102,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_product_from_shopping_trolley()
+        public void ShoppingTrolley_retrieve_product_from_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -117,7 +117,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Retrieve_all_products_from_shopping_trolley()
+        public void ShoppingTrolley_retrieve_all_products_from_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -143,7 +143,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Check_for_product_in_shopping_trolley()
+        public void ShoppingTrolley_check_for_product_in_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -157,7 +157,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Remove_product_from_shopping_trolley()
+        public void ShoppingTrolley_remove_product_from_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -175,7 +175,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Remove_products_in_bulk_from_shopping_trolley()
+        public void ShoppingTrolley_remove_products_in_bulk_from_shopping_trolley()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
@@ -202,7 +202,7 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Count_products_in_shopping_trolley_test()
+        public void ShoppingTrolley_count_products_in_shopping_trolley_test()
         {
             // Setup
             IProductRepositoryBulkActions shoppingTrolley = new ShoppingTrolleyController();
