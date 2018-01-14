@@ -1,12 +1,8 @@
-﻿using CheckoutKata.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckoutKata.Controllers
+﻿namespace CheckoutKata.Controllers
 {
+    using CheckoutKata.Models;
+    using System.Collections.Generic;
+
     class ShoppingTrolleyController : IProductRepositoryBulkActions
     {
         IProductRepositoryBulkActions shoppingTrolley;
@@ -92,6 +88,16 @@ namespace CheckoutKata.Controllers
         public int RemoveBulk(string sku, int units)
         {
             return this.shoppingTrolley.RemoveBulk(sku, units);
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.Replace(Product)"/>
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to replace> an existing <see cref="Product"/></see> with matching SKU.</param>
+        /// <returns>Whether the replacement was successful.</returns>
+        public bool Replace(Product product)
+        {
+            return shoppingTrolley.Replace(product);
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckoutKata.Models
+﻿namespace CheckoutKata.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Represents an inventory of products that are can be added to a shopping trolley,
     /// and provides accessors to retrieve the details of included products.
@@ -79,6 +77,16 @@ namespace CheckoutKata.Models
         public int Count(string sku)
         {
             return this.inventory.ContainsKey(sku) ? 1 : 0;
+        }
+
+        /// <summary>
+        /// <see cref="IProductRepository.Replace(Product)"/>
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to replace> an existing <see cref="Product"/></see> with matching SKU.</param>
+        /// <returns>Whether the replacement was successful.</returns>
+        public bool Replace(Product product)
+        {
+            throw new NotImplementedException();
         }
     }
 }

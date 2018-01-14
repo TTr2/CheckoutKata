@@ -45,7 +45,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ProductInventoryController.cs" />
     <Compile Include="Controllers\ShoppingTrolleyController.cs" />
-    <Compile Include="Models\CheckoutWithTrolleyContentsAsIList.cs" />
+    <Compile Include="Models\Checkout.cs" />
     <Compile Include="Models\ICheckout.cs" />
     <Compile Include="Models\IProductRepository.cs" />
     <Compile Include="Models\IProductRepositoryBulkActions.cs" />
@@ -53,11 +53,13 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductInventoryDictionary.cs" />
     <Compile Include="Models\ShoppingTrolleyDictionary.cs" />
+    <Compile Include="Models\ShoppingTrolleyStringList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

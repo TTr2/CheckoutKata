@@ -16,14 +16,19 @@ namespace CheckoutKata.Controllers
             this.checkout = new Checkout();
         }
 
+        public int Count()
+        {
+            return checkout.Count();
+        }
+
         public int GetTotalPrice()
         {
             return this.checkout.GetTotalPrice();
         }
 
-        public bool Remove(string sku)
+        public bool Remove(Product product)
         {
-            return this.checkout.Remove(sku);
+            return this.checkout.Remove(product);
         }
 
         public void Scan(Product product)

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CheckoutKata.Models
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Interface for a repository of products.
     /// </summary>
@@ -43,6 +40,13 @@ namespace CheckoutKata.Models
         /// <param name="sku">The SKU of the product to remove.</param>
         /// <returns>Whether this product was successfully removed from the repository.</returns>
         bool Remove(string sku);
+
+        /// <summary>
+        /// Replace the product with a new instance.
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to replace> an existing <see cref="Product"/></see> with matching SKU.</param>
+        /// <returns>Whether the replacement was successful.</returns>
+        bool Replace(Product product);
 
         /// <summary>
         /// Gets the number of a given product in repository.

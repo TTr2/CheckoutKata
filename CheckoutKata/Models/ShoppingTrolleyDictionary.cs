@@ -168,5 +168,25 @@ namespace CheckoutKata.Models
                 return 0;
             }
         }
+
+        /// <summary>
+        /// <see cref="IProductRepository.Replace(Product)"/>
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to replace> an existing <see cref="Product"/></see> with matching SKU.</param>
+        /// <returns>Whether the replacement was successful.</returns>
+        public bool Replace(Product product)
+        {
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
+            if (this.shoppingTrolley.ContainsKey(product.Sku))
+            {
+                this.shoppingTrolley[product.Sku][0] = product;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

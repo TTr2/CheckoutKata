@@ -17,14 +17,20 @@ namespace CheckoutKata.Models
         /// <summary>
         /// Removes an item from the total price.
         /// </summary>
-        /// <param name="sku"></param>
+        /// <param name="product">The <see cref="Product"/> to remove.</param>
         /// <returns>Whether the item was removed.</returns>
-        bool Remove(string sku);
+        bool Remove(Product product);
 
         /// <summary>
         /// Calculate and return the total price of all items including special offers.
         /// </summary>
         /// <returns>The total price of all items including special offers.</returns>
         int GetTotalPrice();
+
+        /// <summary>
+        /// Returns the number of Products scanned.
+        /// </summary>
+        /// <returns>the number of Products scanned.</returns>
+        int Count();
     }
 }
