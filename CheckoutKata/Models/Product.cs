@@ -34,12 +34,12 @@ namespace CheckoutKata.Models
         /// <summary>
         /// The price of the product (100 = 1 decimal unit).
         /// </summary>
-        internal int Price { get; set; }
+        internal int Price { get; }
 
         /// <summary>
         /// The MultiDeal for the product, default is non-valid.
         /// </summary>
-        internal MultiDeal MultiDeal {get; set;}
+        internal MultiDeal MultiDeal {get; }
 
         /// <summary>
         /// Whether the given time is after this Product's MultiDeal starts and 

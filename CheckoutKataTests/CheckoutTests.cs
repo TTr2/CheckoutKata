@@ -139,23 +139,6 @@ namespace CheckoutKataTests
         }
 
         [TestMethod]
-        public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_instance()
-        {
-            // Setup
-            ICheckout checkout = new CheckoutController(productInventory);
-            Product product = productInventory.Get("A");
-            int productInstanceOriginalPrice = product.Price;
-            int inventoryOriginalPrice = productInventory.Get(product.Sku).Price;
-
-            // Changing product instance doesn't affect checkout
-            checkout.Scan(product);
-            Assert.AreEqual(productInstanceOriginalPrice, checkout.GetTotalPrice());
-            checkout.Remove(product);
-            product = new Product("A", product.Price * 2);
-            Assert.AreEqual(inventoryOriginalPrice, checkout.GetTotalPrice());
-        }
-
-        [TestMethod]
         public void Checkout_get_total_price_single_item_at_checkout_inc_price_change_of_inventory()
         {
             // Setup
