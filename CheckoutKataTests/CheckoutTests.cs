@@ -216,9 +216,12 @@ namespace CheckoutKataTests
             {
                 checkout.Scan(inventoryProductA);
             }
-            int unitModifier = 1;
-            int totalPriceModifier = 2;
-            MultiDeal newMultiDeal = new MultiDeal(multiDealA.Units + unitModifier, multiDealA.MultiDealPrice * totalPriceModifier, multiDealA.ValidFromDate, multiDealA.ValidBeforeDate);
+            int newDealUnits = multiDealA.Units - 1;
+            int newDealPrice = multiDealA.MultiDealPrice * 3;
+            int numOfMatchingDealsAfterChange = checkout.Count(testSku) / newDealUnits;
+            int numberOfMiscProductsAfterDealChange = checkout.Count(testSku) % newDealUnits;
+            int newExpectedPrice = (newDealPrice * numOfMatchingDealsAfterChange) + (inventoryProductA.Price * numberOfMiscProductsAfterDealChange);
+            MultiDeal newMultiDeal = new MultiDeal(newDealUnits, newDealPrice, multiDealA.ValidFromDate, multiDealA.ValidBeforeDate);
 
             // Act
             int totalPriceBeforeChange = checkout.GetTotalPrice();
@@ -230,7 +233,7 @@ namespace CheckoutKataTests
             // Assert
             // prove that offer change is reflected
             Assert.AreNotEqual(totalPriceBeforeChange, totalPriceAfterChange);
-            Assert.AreEqual(multiDealA.MultiDealPrice * totalPriceModifier, totalPriceAfterChange);
+            Assert.AreEqual(newExpectedPrice, totalPriceAfterChange);
         }
 
         [TestMethod]
