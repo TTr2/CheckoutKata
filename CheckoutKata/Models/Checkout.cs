@@ -105,10 +105,10 @@
         }
 
         /// <summary>
-        /// 
+        /// <see cref="ICheckout.Remove(Product)"/>
         /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
+        /// <param name="product">The <see cref="Product"/> to remove from scanned collection.</param>
+        /// <returns>Wehther the product was removed from collection of scanned products.</returns>
         public bool Remove(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
@@ -124,7 +124,7 @@
         }
 
         /// <summary>
-        /// Adds a product SKU to this checkout's list of scanend products. 
+        /// <see cref="ICheckout.Scan(Product)"/> 
         /// </summary>
         /// <param name="product">The <see cref="Product"/> to scan.</param>
         public void Scan(Product product)

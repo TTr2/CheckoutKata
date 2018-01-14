@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CheckoutKata.Controllers;
+using CheckoutKata.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,9 @@ namespace CheckoutKata
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Please run the CheckoutKata test suite in Visual Studio Test Explorer.");
+
+            Console.ReadKey();
         }
     }
 }

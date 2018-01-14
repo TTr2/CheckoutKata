@@ -12,15 +12,15 @@ namespace CheckoutKataTests
     {
         IProductRepository productInventory;
         IProductRepositoryBulkActions shoppingTrolley;
-        TimeSpan sevenDayInterval;
+        TimeSpan halfWeekInterval;
         DateTime lastWeek, nextWeek, now;
 
         public CheckoutTests()
         {
             // Setup dates for MultiDeal
-            sevenDayInterval = new TimeSpan(3, 12, 0, 0);
-            lastWeek = DateTime.Now.Subtract(sevenDayInterval);
-            nextWeek = DateTime.Now.Add(sevenDayInterval);
+            halfWeekInterval = new TimeSpan(3, 12, 0, 0);
+            lastWeek = DateTime.Now.Subtract(halfWeekInterval);
+            nextWeek = DateTime.Now.Add(halfWeekInterval);
             now = DateTime.Now;
 
             // Setup products
