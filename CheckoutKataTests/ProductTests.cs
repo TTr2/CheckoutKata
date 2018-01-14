@@ -130,23 +130,15 @@ namespace CheckoutKataTests
             DateTime now = DateTime.Now;
 
             // A valid MultiDeal (for now)
-            MultiDeal multiDeal_1 = new MultiDeal(3, 130, lastWeek, nextWeek);
+            MultiDeal multiDeal = new MultiDeal(3, 130, lastWeek, nextWeek);
 
-            // Invalid period values for MultiDeals
-            MultiDeal multiDeal_2 = new MultiDeal(3, 130, lastWeek, lastWeek);
-            MultiDeal multiDeal_3 = new MultiDeal(3, 130, nextWeek, nextWeek);
-
-            Product product_1 = new Product("A", 50, multiDeal_1);
-            Product product_2 = new Product("A", 50, multiDeal_2);
-            Product product_3 = new Product("A", 50, multiDeal_3);
-            Product product_4 = new Product("A", 50, new MultiDeal());
+            Product product_1 = new Product("A", 50, multiDeal);
+            Product product_2 = new Product("A", 50, new MultiDeal());
 
             // Act
-
             // Assert
             Assert.IsTrue(product_1.IsMultiDealValid(now));
             Assert.IsFalse(product_2.IsMultiDealValid(now));
-            Assert.IsFalse(product_3.IsMultiDealValid(now));
 
             // Invalid current times for valid MultiDeal
             Assert.IsFalse(product_1.IsMultiDealValid(lastWeek.Subtract(interval)));

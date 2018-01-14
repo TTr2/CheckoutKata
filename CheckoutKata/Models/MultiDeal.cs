@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckoutKata.Models
+﻿namespace CheckoutKata.Models
 {
+    using System;
+
     /// <summary>
     /// Represents the terms of a special offer, which can be assigned to a product.
     /// </summary>
@@ -31,10 +27,10 @@ namespace CheckoutKata.Models
         /// <param name="validBeforeDate"><see cref="MultiDeal.ValidBeforeDate"/></param>
         public MultiDeal(int units, int multiDealPrice, DateTime validFromDate, DateTime validBeforeDate)
         {
-            this.Units = units;
-            this.MultiDealPrice = multiDealPrice;
-            this.ValidFromDate = validFromDate;
-            this.ValidBeforeDate = validBeforeDate;
+            this.Units = units > 0 ? units : throw new ArgumentException("MultiDeal units must be greater than zero.");
+            this.MultiDealPrice = multiDealPrice >= 0 ? multiDealPrice : throw new ArgumentException("MultiDeal price must be zero or more.");
+            this.ValidFromDate = validFromDate < validBeforeDate ? validFromDate : throw new ArgumentException("MultiDeal 'valid from date' must be before 'valid before date'.");
+            this.ValidBeforeDate = validBeforeDate > validFromDate ? validBeforeDate : throw new ArgumentException("MultiDeal 'valid before date' must be after 'valid from date'.");
         }
 
         /// <summary>
