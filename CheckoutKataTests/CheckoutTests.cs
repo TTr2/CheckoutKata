@@ -311,5 +311,58 @@ namespace CheckoutKataTests
             // Assert
             Assert.AreEqual(expectedPrice, actualTotalPrice);
         }
+
+        [TestMethod]
+        public void Checkout_get_total_price_at_complete_checkout()
+        {
+            // Setup
+            ICheckout checkout = new CheckoutController(productInventory);
+            Product productA = productInventory.Get("A");
+            MultiDeal multiDealA = productA.MultiDeal;
+            for (int i = 0; i < multiDealA.Units; i++)
+            {
+                checkout.Scan(productA);
+            }
+            checkout.Scan(productA);
+            Product productB = productInventory.Get("B");
+            MultiDeal multiDealB = productB.MultiDeal;
+            for (int i = 0; i < multiDealB.Units; i++)
+            {
+                checkout.Scan(productB);
+            }
+            checkout.Scan(productB);
+            int expectedPrice = multiDealA.MultiDealPrice + productA.Price + multiDealB.MultiDealPrice + productB.Price;
+
+            // Act
+            int actualTotalPrice = checkout.CompleteCheckout();
+
+            // Assert
+            Assert.AreEqual(expectedPrice, actualTotalPrice);
+        }
+
+        [TestMethod]
+        public void Checkout_scanned_products_reset_at_complete_checkout()
+        {
+            // Setup
+            ICheckout checkout = new CheckoutController(productInventory);
+            Product productA = productInventory.Get("A");
+            MultiDeal multiDealA = productA.MultiDeal;
+            for (int i = 0; i < 10; i++)
+            {
+                checkout.Scan(productA);
+            }
+            int expectedCountBeforeCheckout = 10;
+            int expectedCountAfterCheckout = 0;
+            int actualCountBeforeCheckout = checkout.CountAll();
+
+            // Act
+            checkout.CompleteCheckout();
+            int actualCountAfterCheckout = checkout.CountAll();
+
+            // Assert
+            Assert.AreNotEqual(expectedCountBeforeCheckout, expectedCountAfterCheckout);
+            Assert.AreEqual(expectedCountBeforeCheckout, actualCountBeforeCheckout);
+            Assert.AreEqual(expectedCountAfterCheckout, actualCountAfterCheckout);
+        }
     }
 }
